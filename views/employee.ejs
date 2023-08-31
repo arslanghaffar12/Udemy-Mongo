@@ -1,0 +1,41 @@
+<%- include("./partials/header") %>
+  <h1 class="text-center">Employee Table</h1>
+  <table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.forEach(employee=> { %>
+        <tr>
+          <td>
+            <%= employee.id %>
+          </td>
+          <td>
+            <%= employee.name %>
+          </td>
+          <td>
+            <%= employee.age %>
+          </td>
+          <td>
+            <%= employee.position %>
+          </td>
+          <td>
+            <a class="btn btn-primary" href="/edit/<%= employee.id %>">Edit</a>
+            <form action="/delete-employee" method="POST">
+              <input value="<%= employee.id%>" hidden>
+              <button type="submit">Delete</button>
+            </form>
+
+          </td>
+
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+  <%- include("./partials/footer") %>
